@@ -1,14 +1,26 @@
+import { BrowserRouter , Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
-function App() {
+import Home from "./pages/Home";
+import Students from "./pages/Students";
+import AddStudent from "./pages/AddStudent";
+import Dashboard from "./pages/Dashboard";
+import About from "./pages/About";
+ function App(){
+  return(
+    <BrowserRouter>
+    <Navbar />
+    <Routes>
+        <Route path="/" element={<Home/>}/>
+         <Route path="/students" element={<Students/>}/>
+          <Route path="/add-students" element={<AddStudent/>}/>
+           <Route path="/dashboard" element={<Dashboard/>}/>
+           <Route path="/about" element={<About/>}/>
 
-
-  return (
-  
-     <h1 classname="text-4xl font-bold text-center mt-10">
-      Student Management System
-     </h1>
+    </Routes>
     
-  )
-}
-
-export default App
+    
+    </BrowserRouter>
+  );
+ }
+ export default App;
