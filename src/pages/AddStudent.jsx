@@ -1,9 +1,30 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 function AddStudent({students, setStudents}){
     
-    const {name, setName} = useState("");
+    const [name, setName] = useState("");
+    const [course, setCourse] =useState("")
+    const [status ,setStatus]= useState("Active")
+    const navigate =useNavigate();
+    function handleSubmit(event){
+        event.preventDefault();
+        const newStudent={
+            id: Date.now(),
+            name: name,
+            course: course,
+            status: status
+        };
 
+        setStudents([
+            ...students,
+            newStudent
+        ]);
+
+        setName("");
+        setCourse("");
+        setStatus("");
+    }
+    navigate("/.students")
     return(
         <div className="max-w-xl mx-auto p-8">
 
@@ -12,7 +33,7 @@ function AddStudent({students, setStudents}){
                 Add Student
 
             </h1>
-
+        <form onSubmit={handleSubmit}>
             <input
                 type="text"
                 placeholder="Student Name"
@@ -20,7 +41,22 @@ function AddStudent({students, setStudents}){
                 onChange={(event) => setName(event.target.value)}
                 className="w-full border p-3 rounded-lg"
             />
-
+            <input
+                type="text"
+                placeholder="Course Name"
+                value={course}
+                onChange={(event) => setCourse(event.target.value)}
+                className="w-full border p-3 rounded-lg"
+            />
+            <select
+                type="text"
+                placeholder="Status"
+                value={status}
+                onChange={(event) => setStatus(event.target.value)}
+                className="w-full border p-3 rounded-lg">
+                    <option value="Active">Avtive</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
             <p className="mt-4">
 
                 You typed:
@@ -28,6 +64,7 @@ function AddStudent({students, setStudents}){
                 <strong> {name}</strong>
 
             </p>
+            </form>
 
         </div>
     );
