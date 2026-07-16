@@ -13,25 +13,25 @@ import { useState } from "react";
           id: 1,
           name: "Vitalis Matheri",
           course: "Medicine",
-          Status : "Active",
+          status : "Active",
       },
       {
           id: 2,
           name :"James Mwangi",
           course :"Aeronotical Engineer",
-          Status : "Active"
+          status : "Active"
       },
       {
           id: 3,
-          name "Yasmin Namir",
+          name: "Yasmin Namir",
           course :"Computer Science",
-          Status : "Active"
+          status : "Active"
       },
       {
-          id: 3,
+          id: 4,
           name :"Ruth Kagia",
           course:"Economics",
-          Status:"Active"
+          status:"Active"
       }
   
       ]);
@@ -45,12 +45,12 @@ import { useState } from "react";
          />
          <Route 
          path="/students" 
-         element={<Students students={students}/>}
+         element={<Students students={students} setStudents={setStudents}/>}
          />
           <Route
            path="/add-students"
             element={<AddStudent students ={students} setStudents={setStudents}/>}/>
-           <Route path="/dashboard" element={<Dashboard/>}/>
+           <Route path="/dashboard" element={<Dashboard students={students}/>}/>
            <Route path="/about" element={<About/>}/>
 
     </Routes>

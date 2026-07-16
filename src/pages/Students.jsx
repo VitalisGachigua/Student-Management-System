@@ -1,7 +1,44 @@
-import { useState } from "react";
+
 import StudentCard from "../components/StudentCard";
 
-Function Students({students}){
+function Students({students, setStudents }){
+    function deleteStudent(id) {
+
+    const updatedStudents = students.filter(function(student){
+
+        return student.id !== id;
+
+    });
+    function toggleStatus(id) {
+
+    const updatedStudents = students.map((student) => {
+
+        if (student.id === id) {
+
+            return {
+
+                ...student,
+
+                status:
+                    student.status === "Active"
+                        ? "Inactive"
+                        : "Active"
+
+            };
+
+        }
+
+        return student;
+
+    });
+
+    setStudents(updatedStudents);
+
+}
+
+    setStudents(updatedStudents);
+
+}
 
     
     return(
@@ -15,7 +52,7 @@ Function Students({students}){
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            {Students.map(function(student){
+            {students.map(function(student){
 
                 return(
 
@@ -29,12 +66,16 @@ Function Students({students}){
 
                         status={student.status}
 
+                       onDelete={() => deleteStudent(student.id)}
+                        onToggle={() => toggleStatus(student.id)}
+
                     />
+    
 
                 );
 
             })}
-
+          
         </div>
 
     </div>

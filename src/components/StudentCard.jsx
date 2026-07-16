@@ -1,30 +1,56 @@
-function StudentCard(props) {
+function StudentCard({
 
-    return (
+name,
 
+course,
+
+status,
+
+onDelete,
+
+onToggle
+
+}){
+    return(
         <div className="bg-white shadow-md rounded-lg p-6">
 
             <h2 className="text-2xl font-bold">
 
-                {props.name}
+                {name}
 
             </h2>
 
             <p className="mt-2">
 
-                {props.course}
+                Course: {course}
 
             </p>
 
             <p className="mt-2">
 
-                {props.status}
+                Status: {status}
 
             </p>
 
-        </div>
+          <div className="flex gap-2 mt-4">
 
-    );
+                <button
+                    onClick={onToggle}
+                    className="bg-blue-600 text-white px-4 py-2 rounded"
+                >
+                    Toggle Status
+                </button>
+
+                <button
+                    onClick={onDelete}
+                    className="bg-red-600 text-white px-4 py-2 rounded"
+                >
+                    Delete
+                </button>
+
+            </div>
+        </div>
+     );   
 
 }
 
